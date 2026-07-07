@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Meghappiii</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Cinzel:wght@500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #04040d !important;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .background-interface {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(138, 26, 77, 0.35) 0%, rgba(4, 4, 13, 0.99) 85%);
+            z-index: 1;
+        }
+
+        /* High-Quality Anime Assets via CDN to bypass local file restrictions */
+        .character-asset {
+            position: absolute;
+            bottom: 0;
+            height: 80%;
+            width: auto;
+            z-index: 3;
+            pointer-events: none;
+            opacity: 0.35;
+            filter: drop-shadow(0 0 25px rgba(0,0,0,0.9));
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .char-gojo {
+            left: 2%;
+            transform: scaleX(1);
+        }
+
+        .char-sukuna {
+            right: 2%;
+            transform: scaleX(-1);
+        }
+
+        body:hover .character-asset {
+            opacity: 0.6;
+        }
+
+        /* Main Animated Cinematic Interface Container */
+        .main-frame {
+            position: relative;
+            width: 90%;
+            height: 85%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border: 1px solid rgba(255, 0, 110, 0.15);
+            background: rgba(4, 4, 13, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .corner-line {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff006e;
+            box-shadow: 0 0 15px rgba(255, 0, 110, 0.6);
+        }
+        .tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+        .tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+        .bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+        .br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+        .side-kanji {
+            position: absolute;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            letter-spacing: 12px;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            color: rgba(255, 0, 110, 0.4);
+            text-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
+            user-select: none;
+            font-weight: 600;
+        }
+        .kanji-left { left: 40px; }
+        .kanji-right { right: 40px; }
+
+        .hero-content {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        .hero-content:hover {
+            transform: scale(1.03);
+        }
+
+        .symbol-container {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 30px auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, rgba(255, 0, 110, 0.15) 0%, transparent 70%);
+        }
+
+        .triangle-accent {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 15px #ff006e);
+            animation: pulseGlow 3s infinite alternate;
+        }
+        .tri-left {
+            left: -30px;
+            border-width: 15px 25px 15px 0;
+            border-color: transparent #ff006e transparent transparent;
+        }
+        .tri-right {
+            right: -30px;
+            border-width: 15px 0 15px 25px;
+            border-color: transparent transparent transparent #ff006e;
+        }
+
+        .heart-core {
+            position: absolute;
+            font-size: 3.5rem;
+            color: #ff006e;
+            text-shadow: 0 0 20px #ff006e, 0 0 40px #ff006e;
+            animation: heartbeat 1.2s infinite ease-in-out;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 20px #ff006e); }
+            100% { transform: scale(0.9); opacity: 0.8; }
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.4; filter: drop-shadow(0 0 10px #ff006e); }
+            100% { opacity: 0.9; filter: drop-shadow(0 0 25px #ff85a2); }
+        }
+
+        .main-heading {
+            font-size: 2.3rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            text-transform: lowercase;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            margin-bottom: 12px;
+            transition: all 0.3s;
+        }
+        
+        .hero-content:hover .main-heading {
+            color: #ff85a2;
+            text-shadow: 0 0 25px rgba(255, 0, 110, 0.8);
+        }
+
+        .sub-heading {
+            font-size: 0.75rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #80536c;
+            margin-right: -8px;
+        }
+
+        #glowCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            pointer-events: none;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div class="background-interface"></div>
+    <canvas id="glowCanvas"></canvas>
+
+    <!-- Global Delivery Network Images (Cross-origin safe for Safari local files) -->
+    <img class="character-asset char-left" src="https://images.unbxd.io/gojo-render-clean.png" onerror="this.src='https://cdn.pixabay.com/photo/2022/03/01/09/46/anime-7040938_1280.png'" alt="Gojo">
+    <img class="character-asset char-right" src="https://images.unbxd.io/sukuna-render-clean.png" onerror="this.src='https://cdn.pixabay.com/photo/2021/09/03/04/11/anime-6594895_1280.png'" alt="Sukuna">
+
+    <div class="main-frame">
+        <div class="corner-line tl"></div>
+        <div class="corner-line tr"></div>
+        <div class="corner-line bl"></div>
+        <div class="corner-line br"></div>
+
+        <div class="side-kanji kanji-left" id="txtL"></div>
+        <div class="side-kanji kanji-right" id="txtR"></div>
+
+        <div class="hero-content">
+            <div class="symbol-container">
+                <div class="triangle-accent tri-left"></div>
+                <div style="width: 130px; height: 130px; border: 1px dashed rgba(255, 0, 110, 0.4); border-radius: 50%; animation: spin 25s linear infinite;"></div>
+                <div class="heart-core">❤</div>
+                <div class="triangle-accent tri-right"></div>
+            </div>
+            
+            <h1 class="main-heading">i love you meghappiii</h1>
+            <p class="sub-heading">Special Grade Curse User Matrix</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('txtL').innerText = "\u7231\u30CE\u523B"; 
+        document.getElementById('txtR').innerText = "\u546A\u8513\u7d50\u754c"; 
+
+        const canvas = document.getElementById('glowCanvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        let mouse = { x: null, y: null };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        function render() {
+            ctx.clearRect(0, 0, width, height);
+            if (mouse.x !== null) {
+                ctx.save();
+                let gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 200);
+                gradient.addColorStop(0, 'rgba(255, 0, 110, 0.13)');
+                gradient.addColorStop(1, 'transparent');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, width, height);
+                ctx.restore();
+            }
+            requestAnimationFrame(render);
+        }
+        render();
+    </script>
+</body>
+</html>
