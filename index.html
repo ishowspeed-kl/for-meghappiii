@@ -35,7 +35,7 @@
             position: relative;
             width: 90%;
             height: 85%;
-            max-width: 500px; /* Tailored perfectly for mobile screens */
+            max-width: 500px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -61,11 +61,21 @@
         .bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
         .br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
 
+        /* Unified heart & message container */
         .symbol-container {
-            width: 160px;
-            height: 160px;
+            width: 100%;
             margin: 0 auto 20px auto;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -78,6 +88,18 @@
             color: #ff006e;
             text-shadow: 0 0 20px #ff006e;
             animation: heartbeat 1.2s infinite ease-in-out;
+        }
+
+        /* Styled overlay text below heart */
+        .heart-subtext {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #ff85a2;
+            text-shadow: 0 0 10px rgba(255, 0, 110, 0.6);
+            margin-top: -10px;
+            margin-bottom: 15px;
+            text-transform: lowercase;
         }
 
         @keyframes heartbeat {
@@ -134,7 +156,6 @@
             right: 10%;
             top: 20px;
             z-index: 101;
-            /* Explicitly absolute for instant mobile teleportation positioning */
         }
 
         #glowCanvas {
@@ -162,8 +183,12 @@
 
         <div class="hero-content">
             <div class="symbol-container">
-                <div style="width: 100px; height: 100px; border: 1px dashed rgba(255, 0, 110, 0.4); border-radius: 50%; animation: spin 25s linear infinite;"></div>
-                <div class="heart-core">❤</div>
+                <div class="heart-wrapper">
+                    <div style="width: 90px; height: 90px; border: 1px dashed rgba(255, 0, 110, 0.4); border-radius: 50%; animation: spin 25s linear infinite;"></div>
+                    <div class="heart-core">❤</div>
+                </div>
+                <!-- Your custom text injected here -->
+                <div class="heart-subtext">i love you meghappiii</div>
             </div>
             
             <h1 class="main-heading">Are you the most beautiful girlfriend in the entire world?</h1>
@@ -176,17 +201,14 @@
     </div>
 
     <script>
-        // Teleportation Logic built uniquely to intercept mobile touch events instantly
         function teleportButton(e) {
-            e.preventDefault(); // Blocks the touch click from registering
+            e.preventDefault();
             const noBtn = document.getElementById('noBtn');
             const frame = document.querySelector('.main-frame');
             
-            // Calculate boundaries relative to the frame wrapper container
             const maxWidth = frame.clientWidth - noBtn.clientWidth - 40;
             const maxHeight = frame.clientHeight - noBtn.clientHeight - 160;
             
-            // Generate randomized dynamic layout parameters
             const randomX = Math.floor(Math.random() * maxWidth) + 20;
             const randomY = Math.floor(Math.random() * maxHeight) + 20;
             
@@ -194,7 +216,6 @@
             noBtn.style.top = randomY + 'px';
         }
 
-        // Infinite Text Alert Loop Payload Chain
         function startPrankLoop() {
             alert("System Validation Protocol: Initiated.");
             alert("Error 404: Too much cuteness detected on this device.");
@@ -204,7 +225,6 @@
             alert("Good girl! Verification complete. I love you! ❤️");
         }
 
-        // Glow matrix interface backdrop setup
         const canvas = document.getElementById('glowCanvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
