@@ -30,36 +30,32 @@
             z-index: 1;
         }
 
-        /* Real JJK Anime Assets with guaranteed cross-origin support */
-        .character-asset {
+        /* High-fidelity Vector Graphics embedded directly in code */
+        .character-graphic {
             position: absolute;
-            bottom: 0;
-            height: 70%;
-            max-height: 600px;
-            width: auto;
-            z-index: 3;
+            bottom: -10px;
+            width: 320px;
+            height: 550px;
+            z-index: 2;
             pointer-events: none;
-            opacity: 0.45;
-            filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
-            transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+            opacity: 0.35;
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
-        .char-gojo {
-            left: -2%;
-            transform: scale(1.1);
+        .char-left {
+            left: 0%;
         }
 
-        .char-sukuna {
-            right: -2%;
-            transform: scaleX(-1) scale(1.1); /* Flips Sukuna symmetrically */
+        .char-right {
+            right: 0%;
+            transform: scaleX(-1);
         }
 
-        body:hover .character-asset {
-            opacity: 0.75;
-            filter: drop-shadow(0 0 35px rgba(255, 0, 110, 0.4));
+        body:hover .character-graphic {
+            opacity: 0.6;
         }
 
-        /* Main Frame Setup */
+        /* Cinematic Frame Container */
         .main-frame {
             position: relative;
             width: 90%;
@@ -204,9 +200,18 @@
     <div class="background-interface"></div>
     <canvas id="glowCanvas"></canvas>
 
-    <!-- Verified Global Image Links for Gojo and Sukuna -->
-    <img class="character-asset char-gojo" src="https://static.wikia.nocookie.net/jujutsu-kaisen/images/d/df/Satoru_Gojo_%28Anime_2%29.png" alt="Gojo">
-    <img class="character-asset char-sukuna" src="https://static.wikia.nocookie.net/jujutsu-kaisen/images/c/c8/Sukuna_%28Anime%29.png" alt="Sukuna">
+    <!-- Gojo Stylized Vector Framework -->
+    <svg class="character-graphic char-left" viewBox="0 0 100 100" preserveAspectRatio="xMidYMax meet">
+        <path d="M5,100 Q20,55 35,40 L38,20 L44,12 L50,22 L55,10 L60,25 L65,35 L62,45 Q75,65 95,100 Z" fill="rgba(0, 162, 255, 0.15)" stroke="rgba(0, 162, 255, 0.5)" stroke-width="0.8"/>
+        <path d="M40,30 L58,34 L56,39 L38,35 Z" fill="rgba(255, 255, 255, 0.8)" />
+        <circle cx="48" cy="32" r="15" fill="none" stroke="rgba(0, 162, 255, 0.2)" stroke-width="0.5" stroke-dasharray="2,2"/>
+    </svg>
+
+    <!-- Sukuna Stylized Vector Framework -->
+    <svg class="character-graphic char-right" viewBox="0 0 100 100" preserveAspectRatio="xMidYMax meet">
+        <path d="M5,100 Q20,55 32,40 L35,20 L42,8 L46,24 L54,6 L58,22 L66,35 Q78,60 95,100 Z" fill="rgba(255, 0, 110, 0.13)" stroke="rgba(255, 0, 110, 0.5)" stroke-width="0.8"/>
+        <path d="M42,26 Q48,20 54,26 M44,32 Q48,36 52,32" fill="none" stroke="#ff006e" stroke-width="0.8"/>
+    </svg>
 
     <div class="main-frame">
         <div class="corner-line tl"></div>
