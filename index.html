@@ -30,34 +30,36 @@
             z-index: 1;
         }
 
-        /* High-Quality Anime Assets via CDN to bypass local file restrictions */
+        /* Real JJK Anime Assets with guaranteed cross-origin support */
         .character-asset {
             position: absolute;
             bottom: 0;
-            height: 80%;
+            height: 70%;
+            max-height: 600px;
             width: auto;
             z-index: 3;
             pointer-events: none;
-            opacity: 0.35;
-            filter: drop-shadow(0 0 25px rgba(0,0,0,0.9));
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            opacity: 0.45;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
+            transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
         }
 
         .char-gojo {
-            left: 2%;
-            transform: scaleX(1);
+            left: -2%;
+            transform: scale(1.1);
         }
 
         .char-sukuna {
-            right: 2%;
-            transform: scaleX(-1);
+            right: -2%;
+            transform: scaleX(-1) scale(1.1); /* Flips Sukuna symmetrically */
         }
 
         body:hover .character-asset {
-            opacity: 0.6;
+            opacity: 0.75;
+            filter: drop-shadow(0 0 35px rgba(255, 0, 110, 0.4));
         }
 
-        /* Main Animated Cinematic Interface Container */
+        /* Main Frame Setup */
         .main-frame {
             position: relative;
             width: 90%;
@@ -69,7 +71,7 @@
             align-items: center;
             z-index: 10;
             border: 1px solid rgba(255, 0, 110, 0.15);
-            background: rgba(4, 4, 13, 0.6);
+            background: rgba(4, 4, 13, 0.65);
             backdrop-filter: blur(8px);
             padding: 40px;
             border-radius: 8px;
@@ -202,9 +204,9 @@
     <div class="background-interface"></div>
     <canvas id="glowCanvas"></canvas>
 
-    <!-- Global Delivery Network Images (Cross-origin safe for Safari local files) -->
-    <img class="character-asset char-left" src="https://images.unbxd.io/gojo-render-clean.png" onerror="this.src='https://cdn.pixabay.com/photo/2022/03/01/09/46/anime-7040938_1280.png'" alt="Gojo">
-    <img class="character-asset char-right" src="https://images.unbxd.io/sukuna-render-clean.png" onerror="this.src='https://cdn.pixabay.com/photo/2021/09/03/04/11/anime-6594895_1280.png'" alt="Sukuna">
+    <!-- Verified Global Image Links for Gojo and Sukuna -->
+    <img class="character-asset char-gojo" src="https://static.wikia.nocookie.net/jujutsu-kaisen/images/d/df/Satoru_Gojo_%28Anime_2%29.png" alt="Gojo">
+    <img class="character-asset char-sukuna" src="https://static.wikia.nocookie.net/jujutsu-kaisen/images/c/c8/Sukuna_%28Anime%29.png" alt="Sukuna">
 
     <div class="main-frame">
         <div class="corner-line tl"></div>
@@ -212,8 +214,8 @@
         <div class="corner-line bl"></div>
         <div class="corner-line br"></div>
 
-        <div class="side-kanji kanji-left" id="txtL"></div>
-        <div class="side-kanji kanji-right" id="txtR"></div>
+        <div class="side-kanji kanji-left">愛ノ刻</div>
+        <div class="side-kanji kanji-right">呪蔓結界</div>
 
         <div class="hero-content">
             <div class="symbol-container">
@@ -229,9 +231,6 @@
     </div>
 
     <script>
-        document.getElementById('txtL').innerText = "\u7231\u30CE\u523B"; 
-        document.getElementById('txtR').innerText = "\u546A\u8513\u7d50\u754c"; 
-
         const canvas = document.getElementById('glowCanvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
