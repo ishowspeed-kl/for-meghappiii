@@ -47,6 +47,7 @@
             padding: 30px 20px;
             border-radius: 8px;
             text-align: center;
+            transition: all 0.5s ease;
         }
 
         .corner-line {
@@ -61,7 +62,6 @@
         .bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
         .br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
 
-        /* Unified heart & message container */
         .symbol-container {
             width: 100%;
             margin: 0 auto 20px auto;
@@ -90,7 +90,6 @@
             animation: heartbeat 1.2s infinite ease-in-out;
         }
 
-        /* Styled overlay text below heart */
         .heart-subtext {
             font-size: 0.85rem;
             font-weight: 400;
@@ -118,7 +117,6 @@
             margin-bottom: 25px;
         }
 
-        /* Prank Interactive Button Matrix */
         .button-box {
             position: relative;
             width: 100%;
@@ -158,6 +156,22 @@
             z-index: 101;
         }
 
+        /* Flower falling styles */
+        .flower {
+            position: absolute;
+            color: #ff85a2;
+            font-size: 1.5rem;
+            pointer-events: none;
+            z-index: 99;
+            animation: fall linear forwards;
+            text-shadow: 0 0 8px rgba(255, 0, 110, 0.4);
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
+
         #glowCanvas {
             position: absolute;
             top: 0;
@@ -187,13 +201,12 @@
                     <div style="width: 90px; height: 90px; border: 1px dashed rgba(255, 0, 110, 0.4); border-radius: 50%; animation: spin 25s linear infinite;"></div>
                     <div class="heart-core">❤</div>
                 </div>
-                <!-- Your custom text injected here -->
                 <div class="heart-subtext">i love you meghappiii</div>
             </div>
             
-            <h1 class="main-heading">Are you the most beautiful girlfriend in the entire world?</h1>
+            <h1 class="main-heading" id="contentHeading">Are you the most beautiful girlfriend in the entire world?</h1>
             
-            <div class="button-box">
+            <div class="button-box" id="btnBox">
                 <button id="yesBtn" class="prank-btn" onclick="startPrankLoop()">YES</button>
                 <button id="noBtn" class="prank-btn" ontouchstart="teleportButton(event)" onclick="teleportButton(event)">NO</button>
             </div>
@@ -222,7 +235,43 @@
             alert("Access Denied! You cannot close this page until you send your boyfriend 1000 kisses immediately. 💋");
             alert("Warning: Disobeying this alert will result in infinite tickles.");
             alert("Are you going to send them right now?");
-            alert("Good girl! Verification complete. I love you! ❤️");
+            
+            // Trigger final reveal sequence
+            revealSurprise();
+        }
+
+        function revealSurprise() {
+            // Remove the buttons cleanly
+            document.getElementById('btnBox').style.display = 'none';
+            
+            // Switch heading text seamlessly to your prank reveal sentence
+            const heading = document.getElementById('contentHeading');
+            heading.innerHTML = "hey my love you got pranked 😂❤️";
+            heading.style.color = "#ff85a2";
+            heading.style.textShadow = "0 0 20px #ff006e";
+
+            // Make it rain cherry blossom flowers continuously
+            setInterval(createFlower, 150);
+        }
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            
+            // Randomly select between a few lovely flower vectors/emojis
+            const flowers = ['🌸', '💮', '🌺', '🌷'];
+            flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+            
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
+            flower.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+            
+            document.body.appendChild(flower);
+            
+            // Clean up old flowers out of DOM memory loop
+            setTimeout(() => {
+                flower.remove();
+            }, 5000);
         }
 
         const canvas = document.getElementById('glowCanvas');
