@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Meghappiii</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Cinzel:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght=200;400;600&family=Cinzel:wght=500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -30,29 +30,32 @@
             z-index: 1;
         }
 
-        /* High-fidelity Vector Graphics embedded directly in code */
-        .character-graphic {
+        /* High-Quality Anime Animations with Cross-Origin Compatibility */
+        .character-animation {
             position: absolute;
-            bottom: -10px;
-            width: 320px;
-            height: 550px;
-            z-index: 2;
+            bottom: 0;
+            height: 75%;
+            max-height: 550px;
+            width: auto;
+            z-index: 3;
             pointer-events: none;
-            opacity: 0.35;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 25px rgba(0,0,0,0.85));
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         .char-left {
-            left: 0%;
+            left: 2%;
         }
 
         .char-right {
-            right: 0%;
-            transform: scaleX(-1);
+            right: 2%;
+            transform: scaleX(-1); /* Flips animation layout symmetrically */
         }
 
-        body:hover .character-graphic {
-            opacity: 0.6;
+        body:hover .character-animation {
+            opacity: 0.85;
+            transform: translateY(-5px);
         }
 
         /* Cinematic Frame Container */
@@ -105,9 +108,7 @@
             cursor: pointer;
             transition: transform 0.4s ease;
         }
-        .hero-content:hover {
-            transform: scale(1.03);
-        }
+        .hero-content:hover { transform: scale(1.03); }
 
         .symbol-container {
             width: 280px;
@@ -129,16 +130,8 @@
             filter: drop-shadow(0 0 15px #ff006e);
             animation: pulseGlow 3s infinite alternate;
         }
-        .tri-left {
-            left: -30px;
-            border-width: 15px 25px 15px 0;
-            border-color: transparent #ff006e transparent transparent;
-        }
-        .tri-right {
-            right: -30px;
-            border-width: 15px 0 15px 25px;
-            border-color: transparent transparent transparent #ff006e;
-        }
+        .tri-left { left: -30px; border-width: 15px 25px 15px 0; border-color: transparent #ff006e transparent transparent; }
+        .tri-right { right: -30px; border-width: 15px 0 15px 25px; border-color: transparent transparent transparent #ff006e; }
 
         .heart-core {
             position: absolute;
@@ -200,18 +193,9 @@
     <div class="background-interface"></div>
     <canvas id="glowCanvas"></canvas>
 
-    <!-- Gojo Stylized Vector Framework -->
-    <svg class="character-graphic char-left" viewBox="0 0 100 100" preserveAspectRatio="xMidYMax meet">
-        <path d="M5,100 Q20,55 35,40 L38,20 L44,12 L50,22 L55,10 L60,25 L65,35 L62,45 Q75,65 95,100 Z" fill="rgba(0, 162, 255, 0.15)" stroke="rgba(0, 162, 255, 0.5)" stroke-width="0.8"/>
-        <path d="M40,30 L58,34 L56,39 L38,35 Z" fill="rgba(255, 255, 255, 0.8)" />
-        <circle cx="48" cy="32" r="15" fill="none" stroke="rgba(0, 162, 255, 0.2)" stroke-width="0.5" stroke-dasharray="2,2"/>
-    </svg>
-
-    <!-- Sukuna Stylized Vector Framework -->
-    <svg class="character-graphic char-right" viewBox="0 0 100 100" preserveAspectRatio="xMidYMax meet">
-        <path d="M5,100 Q20,55 32,40 L35,20 L42,8 L46,24 L54,6 L58,22 L66,35 Q78,60 95,100 Z" fill="rgba(255, 0, 110, 0.13)" stroke="rgba(255, 0, 110, 0.5)" stroke-width="0.8"/>
-        <path d="M42,26 Q48,20 54,26 M44,32 Q48,36 52,32" fill="none" stroke="#ff006e" stroke-width="0.8"/>
-    </svg>
+    <!-- Reliable Publicly Accessible CDN Cloud Assets for Gojo and Sukuna Animations -->
+    <img class="character-animation char-left" src="https://media.giphy.com/media/V3zHqqclvCXfK6vA9v/gpg.gif" onerror="this.src='https://i.imgur.com/KdfG8vB.gif'" alt="Gojo Animation">
+    <img class="character-animation char-right" src="https://media.giphy.com/media/bM5HUXA867wfO6yvfn/gpg.gif" onerror="this.src='https://i.imgur.com/8Qj8mC7.gif'" alt="Sukuna Animation">
 
     <div class="main-frame">
         <div class="corner-line tl"></div>
